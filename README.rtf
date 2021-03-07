@@ -1,57 +1,54 @@
-{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}{\f1\fswiss\fcharset204{\*\fname Arial;}Arial CYR;}{\f2\fmodern\fprq1\fcharset0 Courier New;}}
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}{\f1\fswiss\fprq2\fcharset204 Arial;}{\f2\fswiss\fcharset204 Arial CYR;}{\f3\fmodern\fprq1\fcharset0 Courier New;}}
 {\colortbl ;\red0\green0\blue0;\red255\green0\blue0;\red0\green0\blue127;\red0\green0\blue128;}
-\viewkind4\uc1\pard\nowidctlpar\fi3150\b\f0\fs20 MapTool\par
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\nowidctlpar\fi3150\b\f0\fs20 MapTool\par
+
 \pard\nowidctlpar\par
 \par
-\pard\nowidctlpar\fi3150\cf1 Introduction\lang1049\par
-\pard\nowidctlpar\cf2\lang1033\b0\par
-\lang1049\par
-\cf0\lang1033 A debugging tool for map analysis functions and procedures is presented here. \par
+
+\pard\nowidctlpar\fi3150\cf1 Introduction\f1\lang1049\par
+
+\pard\nowidctlpar\cf2\b0\f0\lang1033\par
+\f1\lang1049\par
+
+\pard\sa200\sl276\slmult1\cf0\f0\lang1033 A debugging tool for map analysis functions and procedures is presented here. \par
+The map contains important information. Extracting maximum information from the map gives more privileges. The \b MapTool\b0  helps in the development of various functions and procedures such kind of path-finding algorithms, the algorithm for choosing the best place for city founding, etc and this feature is the main goal. The \b MapTool\b0  is suitable for mapmakers in creating preview Bitmap also.\par
+Foremost lets you are not shocked by the bad structure of program source code. It was concocted in a quick and dirty way for the quickest verification of ideas, which for me had the greater (vital) importance. \par
+When I got some positive results, I decided to pass ones for other AI developers instantly and didn't want to spend time to put in order my source code. \par
+Nevertheless, this instrument, task entrusted on her, exactly as an instrument, solves, and I hope that it can help other developers in the development and testing of the functions and procedures, related to the analysis of the map. For this purpose, in addition to your examinee procedure, you will add the suitable elements to the interface of the program, which allows you to observe the result. The possibility to display array represented data (for example Influence maps) is built-in in the program. To use this possibility you need to inherit the class from \b TUserLayer\b0  and write your procedure - \b InitLayerData\b0  for filling of data for him. It is then needed to create the object (objects) of this class and add it (them) to the list \b UserLayers\b0 . Example of how all it can be done showed in the unit \b ExampleLayer.pas\b0 .\par
+In the future, if you will consider it necessary, I will complement the program by the possibility of show vectorial information (for example pre-generated way, etc). And similarly, I will endeavor to give a tolerable kind to the program.\par
 \par
-Map contains important information. Extracting maximum information from the map gives more privileges. The \b MapTool\b0  helps in development various functions and procedures such kind of path finding algorithms, algorithm for choose best place for city founding etc and this feature is main goal. The \b MapTool\b0  is suitable for mapmakers in creating preview Bitmap also.\par
+
+\pard\nowidctlpar\fi3150\b How to work with the program\cf2\f1\lang1049\par
+
+\pard\sa200\sl276\slmult1\cf0\b0\f0\lang1033\par
+As the program is intended for developers, I will not begin long to describe an interface. For the change, the legend of the map, open the legend dialog, and then open the ColorDialog by double-clicking on the element, which you want to change. Then in ColorDialog, choose a necessary color. For the change in the legend of the interval of values, select an interval. ColorDialog will be opened automatically, and then choose two colors - one for the beginning of the interval and one for the end of the interval. The intermediate colors will be calculated by linear interpolation. The direction in which you will choose an interval will be accepted into account. New legend automatically will be saved on exit from the program in the file \b MapTool.ini\b0 . For recovery of the default values, you will simply delete this file. A dialog for pathfinding algorithms has buttons with glyphs representing foresight. Pressing on them you can choose the necessary Loc clicking on the map.\par
+I added a few new declarations to the file \b Switches.pas\b0 . All of them influence to work of pathfinding algorithms\par
+\{$DEFINE ASSEMBLER\}\tab -\tab For the \b TBHPQ\b0 , \b TQHPQ\b0 , and \b TSDEBPQ\b0  assembler implementations will be used\par
+\{$DEFINE STATISTICS\}\tab\tab -\tab Calculates the maximal depth of Priority Queue (PQ). On assembler, implementations do not influence\par
+\{$DEFINE DISPLAY\} \tab\tab -\tab Allows You to observe the content of \b PQ\b0  visually. Abolishes the benchmark for the path-finding algorithms.\par
 \par
-Foremost lets you are not shocked by the bad structure of program source code. It was concocted by quick and dirty way for the quickest verification of ideas, which for me had the greater (vital) importance. \par
-\par
-When I got some positive results, I decided pass ones for other AI developers instantly and didn't want to spend time for to put in order my source code. \par
-\cf2\par
-\cf1 Nevertheless this instrument, task entrusted on her, exactly as instrument, solves, and I hope that it can help other developers in development and testing of the functions and procedures, related to the analysis of map. For this purpose, in addition to your own examinee procedure you will add the\lang1049  \lang1033 suitable elements to interface of the program, which allows you to observe the result. \cf0 Possibility to display array represented data (for example Influence maps) is built-in in the program. For use this possibility you need to inherit the class from \b TUserLayer\b0  and write you own\lang1049  \lang1033 procedure - \b InitLayerData\b0  for filling of data for him.\lang1049  \lang1033 It is then needed to create the object (objects) of this class and add it (them) to the list \b UserLayers\b0 .\lang1049  \lang1033 Example of how all it can be done showed in unit \b ExampleLayer.pas\b0 .\par
-\cf2\lang1049\par
-\cf0\lang1033 In future, if you will consider it necessary, I will complement the program by possibility of show vectorial information (for example pregenerated way, etc).\lang1049  \lang1033 And similarly I will endeavour to give a tolerable kind to the program.\par
-\b\par
-\par
-\pard\nowidctlpar\fi3150 How to work with the program\cf2\lang1049\par
-\par
-\pard\nowidctlpar\cf1\lang1033\b0 As the program is intended for developers, I will not begin long to describe an interface. For the change the legend of map, open the legend dialog and then open the ColorDialog by double-clicking on the element, which you want to change. Then in ColorDialog, choose a necessary color. \cf0 For the change the legend of the interval of values, select an interval. ColorDialog will be opened automatically, and then choose two colors - one for the beginning of interval and one for the end of interval. The intermediate colors will be calculated by linear interpolation. The direction in which you will choose an interval will be accepted into account.\lang1049  \lang1033 New legend automatically will be saved on exit from the program in the file\b  MapTool.ini\lang1049\b0 . \lang1033 For recovery the default values, you will simply delete this file. A dialog for path finding algorithms has the buttons with glyphs representing foresights. Pressing on them you can choose necessary Loc clicking on the map.\par
-\b\par
-\b0 I added a few new declarations to the file \b Switches.pas\b0 .\lang1049  \lang1033 All of them influence to work of path finding algorithms\par
-\cf1\lang1049\par
-\{$DEFINE ASSEMBLER\}\tab -\tab\lang1033 For the \b TBHPQ\b0 , \b TQHPQ\b0  and \b TSDEBPQ\b0  assembler implementations will used\par
-\lang1049\{$DEFINE STATISTICS\}\tab\tab -\tab\lang1033 Calculates the maximal depth of Priority Queue (\b PQ\b0 ). On assembler implementations does not influence\par
-\lang1049\{$DEFINE DISPLAY\} \tab\tab -\tab\lang1033 Allows You to observe the content of \b PQ\lang1049  \lang1033\b0 visually\lang1049 . \lang1033 Abolishes the benchmark for the path\lang1049  \lang1033 finding\lang1049  \lang1033 algorithms.\par
-\b\par
-\cf2\lang1049\b0\par
-\cf0\lang1033 In order that you did the experiments with own maps, it will be necessary in the code of Your AI, to add anything like it:\par
-\cf2\lang1049\par
-\cf1\{$\lang1033 DEFINE\lang1049  \lang1033 SAVEMAP\lang1049\}\tab //\lang1033 somewhere at the beginning\b\par
-\lang1049\b0\par
-\lang1033 // \lang1049 then\lang1033\par
+So that you did the experiments with your maps, it will be necessary for the code of Your AI, to add anything like it:\par
+\{$DEFINE SAVEMAP\}\tab //somewhere at the beginning\par
+
+\pard\nowidctlpar\cf1 // \f1\lang1049 then\f0\lang1033\par
 \{$IFDEF SAVEMAP\}\par
 \tab const\tab Save:\tab\tab Boolean = True;\par
 \tab\tab MapSign:\tab PChar ='Map Data 01';\par
-\lang1049\{$\lang1033 ENDIF\lang1049\}\par
+\f1\lang1049\{$\f0\lang1033 ENDIF\f1\lang1049\}\par
 \par
 \par
-// \lang1033 In the section of declarations, for example DoTurn\par
+// \f0\lang1033 In the section of declarations, for example DoTurn\par
 \{$IFDEF SAVEMAP\}\par
 \tab F:\tab\tab\tab\tab File;\par
 \{$ENDIF\}\par
 \par
-\lang1049 // \lang1033 At the end of the same procedure\par
-\lang1049\{$\lang1033 IFDEF\lang1049  \lang1033 SAVEMAP\lang1049\}\par
-\tab\lang1033 if Save then\tab  // or \tab if RO.Turn = K  then\par
-\tab\tab\tab\lang1049 // \lang1033 Where K is Turn necessary to you \par
-\lang1049\tab\lang1033 begin\lang1049\par
-\tab\tab\lang1033 Save := False;\par
+\f1\lang1049 // \f0\lang1033 At the end of the same procedure\par
+\f1\lang1049\{$\f0\lang1033 IFDEF\f1\lang1049  \f0\lang1033 SAVEMAP\f1\lang1049\}\par
+\tab\f0\lang1033 if Save then\tab  // or \tab if RO.Turn = K  then\par
+\tab\tab\tab\f1\lang1049 // \f0\lang1033 Where K is Turn necessary to you \par
+\f1\lang1049\tab\f0\lang1033 begin\f1\lang1049\par
+\tab\tab\f0\lang1033 Save := False;\par
 \tab\tab AssignFile(F, 'MyAI_Map.dat');\par
 \par
 \tab\tab Rewrite(F, 1);\par
@@ -64,37 +61,48 @@ When I got some positive results, I decided pass ones for other AI developers in
 \tab\tab CloseFile(F);\par
 \tab end;\par
 \{$ENDIF\}\par
-\par
-\par
- With the help of "MapTool" I optimized "FindFormations" and "GetMoveAdvice" functions and still more.\par
-Taking into consideration of importance of path finding algorithms, I partially explain classes, which improves path finding performance.\par
-\cf0\par
+
+\pard\sa200\sl276\slmult1\cf0\par
+ With the help of "MapTool", I optimized "FindFormations" and "GetMoveAdvice" functions and still more.\par
+Taking into consideration the importance of pathfinding algorithms, I partially explain classes, which improve pathfinding performance.\par
+
 \pard\nowidctlpar\fi3240\b ***\par
+
 \pard\nowidctlpar\fi1800\tx1710 Description of TBHPQ\par
-\pard\nowidctlpar TBHPQ\b0  is \b B\b0 inary \b H\b0 eap implementation of the \b P\b0 riority \b Q\b0 ueue. It is the unique condition of rightness of Binary Heap (and all k-ry Heaps) that any descendant must be greater (smaller, if it is needed, to get greatest value) than ancestor.\par
-\lang1049\b\par
-\lang1033\par
+
+\pard\sa200\sl276\slmult1 TBHPQ\b0  is a \b B\b0 inary \b H\b0 eap implementation of the \b P\b0 riority \b Q\b0 ueue. It is the unique condition of the rightness of Binary Heap (and all k-ry Heaps) that any descendant must be greater (smaller, if it is needed, to get the greatest value) than the ancestor.\par
+
+\pard\nowidctlpar\b\par
+
 \pard\nowidctlpar\fi1800\tx1710 How works TBHPQ\par
-\pard\nowidctlpar TBHPQ.Put \b0 Inserts \b (Item, Value) \b0 pair to the heap only if the \b Item \b0 is\b  \b0 not visited or new \b Value\b0  is smaller than old one. The above conditions are part of Dijksta's algorithm and most of graph algorithms. By classical definition of binary heaps (\b BH\b0 ), we must insert new data pairs to the heap in any case. To decrease key uses independent function. \b TBHPQ.Put\b0  is combination of insert and decrease_key functions in classical terminology \cf1 and relaxion, which is part of Dijksta's algorithm. \cf0 This is essential difference of \b TBHPQ\b0  than classic \b BH\b0  definition. This is implemented as this:\par
+
+\pard\nowidctlpar TBHPQ.Put\b0 .Put Inserts \b (Item, Value)\b0  pair to the heap only if the \b Item\b0  is not visited or new \b Value\b0  is smaller than old one. The above conditions are part of Dijkstra's algorithm and most of the graph algorithms. By classical definition of binary heaps \b (BH)\b0 , we must insert new data pairs to the heap in any case. To decrease key uses independent function. \b TBHPQ.Put\b0  is the combination of insert and decrease_key functions in classical terminology and conception, which is part of Dijkstra's algorithm. This is an essential difference between \b TBHPQ\b0  than classic \b BH\b0  definition. This is implemented like this:\par
 \par
+
 \pard\nowidctlpar\fi540\cf3\i // Make a local copy of the Ix and bh. This forces Delphi compiler put it to registers.\par
 \cf0\i0 lIx := Ix;\tab lbh := bh;\par
 \par
 i := lIx[Item];\b\par
 if\b0  i < 0 \b then\b0\par
 \b begin\tab\tab\cf3\b0\i // not visited\cf0\i0\par
+
 \pard\nowidctlpar\fi990 i := n;\par
 Inc(n);\tab\cf3\i // Make new place in heap increasing heap size\cf0\i0\par
+
 \pard\nowidctlpar\fi540\b end\par
 else if\b0  lbh[i].Value <= Value \b then\par
 begin\tab\tab\cf3\i // \b0 Visited and new \b Value\b0  is not smaller\b\par
+
 \pard\nowidctlpar\fi990\cf0\b0\i0 result := False;\par
 exit;\tab\tab\cf3\i // nothing to do\cf0\i0\par
+
 \pard\nowidctlpar\fi540\b end;\b0\par
 \par
-\pard\nowidctlpar Now we should put the \b (Item, Value) \b0 pair to the appropriate position in the heap. In case of replacing old \b Value\b0 ,\b  \b0 since a new \b Value \b0 is not greater than old one, it is not greater than old children too. By this reason, we can start process at current position; this is not affect old children. This is advantage of \cf1 already explained combination.\cf0\par
+
+\pard\nowidctlpar Now we should put the \b (Item, Value)\b0  pair to the appropriate position in the heap. In the case of replacing an old \b Value\b0 , since a new \b Value\b0  is not greater than an old one, it is not greater than old children too. For this reason, we can start the process at our current position; this does not affect old children. This is the advantage of the already explained combination.\par
 \par
-\pard\nowidctlpar\ri-571\lang1049\f1{\pict\wmetafile8\picw15609\pich5556\picwgoal8849\pichgoal3150 
+
+\pard\nowidctlpar\ri-571\f2\lang1049{\pict{\*\picprop}\wmetafile8\picw15609\pich5556\picwgoal8849\pichgoal3150 
 0100090000033ef3000000001af3000000000400000003010800050000000b0200000000050000
 000c02d2004e02050000000701040000001af30000430f2000cc000000d2004e0200000000d200
 4e0200000000280000004e020000d20000000100080000000000a0e50100c40e0000c40e000014
@@ -3289,12 +3297,16 @@ exit;\tab\tab\cf3\i // nothing to do\cf0\i0\par
 131313131313131313131313131313131313131313131313131313131313131313131313131313
 131313131313131313131313131313131313131313131313131313131313131313130000050000
 00070101000000030000000000
-}\lang1033\f0\par
+}\f0\lang1033\par
+
 \pard\nowidctlpar\fi4230 Array representation of the binary heap.\par
+
 \pard\nowidctlpar\fs28\par
+
 \pard\nowidctlpar\sb100\sa100\fs20 Insertion works in following way: \par
+
 \pard\nowidctlpar\par
-\lang1049\f1{\pict\wmetafile8\picw18519\pich6085\picwgoal10499\pichgoal3450 
+\f2\lang1049{\pict{\*\picprop}\wmetafile8\picw18519\pich6085\picwgoal10499\pichgoal3450 
 010009000003de3a01000000ba3a010000000400000003010800050000000b0200000000050000
 000c02e600bc0205000000070104000000ba3a0100430f2000cc000000e600bc0200000000e600
 bc020000000028000000bc020000e60000000100080000000000e8740200c40e0000c40e000012
@@ -7429,9 +7441,9 @@ bc020000000028000000bc020000e60000000100080000000000e8740200c40e0000c40e000012
 111111111111111111111111111111111111111111111111111111111111111111111111111111
 111111111111111111111111111111111111111111111111111111111111111111111111111111
 11111111111111111105000000070101000000030000000000
-}\f0\par
+}\f0\lang1033\par
 \par
-\f1{\pict\wmetafile8\picw18519\pich6085\picwgoal10499\pichgoal3450 
+\f2\lang1049{\pict{\*\picprop}\wmetafile8\picw18519\pich6085\picwgoal10499\pichgoal3450 
 010009000003de3a01000000ba3a010000000400000003010800050000000b0200000000050000
 000c02e600bc0205000000070104000000ba3a0100430f2000cc000000e600bc0200000000e600
 bc020000000028000000bc020000e60000000100080000000000e8740200c40e0000c40e000012
@@ -11566,15 +11578,17 @@ bc020000000028000000bc020000e60000000100080000000000e8740200c40e0000c40e000012
 111111111111111111111111111111111111111111111111111111111111111111111111111111
 111111111111111111111111111111111111111111111111111111111111111111111111111111
 11111111111111111105000000070101000000030000000000
-}\f0\par
+}\f0\lang1033\par
 \par
-\lang1033 Not swaps needed, only replaces.\par
+Not swaps needed, only replaces.\par
 \par
 This algorithm is implemented using array representation of the binary heap as this:\par
 \par
+
 \pard\nowidctlpar\fi540\cf3\i // stop if the insertion point reaches the top of the heap\par
 \cf0\b\i0 while\b0  i > 0 \b do\b0\par
 \b begin\b0\par
+
 \pard\nowidctlpar\fi990 j := (i-1) \b shr\b0  1;\tab\cf3\i // Parent(i) = (i-1)/2\cf0\i0\par
 \cf3\i // We have the correct insertion point when the item \cf4 Value \cf3 is >= parent\par
 \cf0\b\i0 if\b0  Value >= lbh[j].Value \b then\b0\tab break;\par
@@ -11583,6 +11597,7 @@ This algorithm is implemented using array representation of the binary heap as t
 lIx[lbh[i].Item] := i;\par
 \cf3\i // and insertion point up.\cf0\i0\par
 i := j;\par
+
 \pard\nowidctlpar\fi540\b end;\b0\par
 \cf3\i //\tab Insert the new Item at the insertion point found.\cf0\i0\par
 lbh[i].Value := Value;\par
@@ -11590,12 +11605,15 @@ lbh[i].Item := Item;\par
 lIx[lbh[i].Item] := i;\par
 result := True;\par
 \par
+
 \pard\nowidctlpar Time complexity of \b TBHPQ.Put\b0  is O(lg(n)).\par
 \par
-\pard\nowidctlpar\sb100\sa100\b TBHPQ.Get \b0 takes smallest element of the heap and deletes it from the heap. Since the smallest element is always at the root in a heap, we must always delete the root element. To do this first delete min element from heap. Now root is empty. Extract rightmost element from the heap, decreasing array size by one and try put it at the root. If root have children smaller than this one, move smaller child up by the tree and try put ex-last item to new unused place in the same condition.\cf1  It requires O(lg(n)) time.\par
+
+\pard\sa200\sl276\slmult1\b TBHPQ.Get \b0 Get takes the smallest element of the heap and deletes it from the heap. Since the smallest element is always at the root in a heap, we must always delete the root element. To do this first delete the min element from the heap. Now root is empty. Extract the rightmost element from the heap, decreasing array size by one, and try to put it at the root. If the root has children smaller than this one, move the smaller child up by the tree and try to put the ex-last item to a new unused place in the same condition. It requires O(log(n)) time.\par
 Graphical explanation:\par
-\cf0\par
-\lang1049\f1{\pict\wmetafile8\picw18519\pich6350\picwgoal10499\pichgoal3600 
+\par
+
+\pard\nowidctlpar\sb100\sa100\f2\lang1049{\pict{\*\picprop}\wmetafile8\picw18519\pich6350\picwgoal10499\pichgoal3600 
 0100090000038c48010000006848010000000400000003010800050000000b0200000000050000
 000c02f000bc020500000007010400000068480100430f2000cc000000f000bc0200000000f000
 bc020000000028000000bc020000f0000000010008000000000040900200c40e0000c40e000013
@@ -15910,8 +15928,8 @@ bc020000000028000000bc020000f0000000010008000000000040900200c40e0000c40e000013
 121212121212121212121212121212121212121212121212121212121212121212121212121212
 121212121212121212121212121212121212121212121212121212121212121205000000070101
 000000030000000000
-}\lang1033\f0\par
-\lang1049\f1{\pict\wmetafile8\picw18519\pich6085\picwgoal10499\pichgoal3450 
+}\f0\lang1033\par
+\f2\lang1049{\pict{\*\picprop}\wmetafile8\picw18519\pich6085\picwgoal10499\pichgoal3450 
 010009000003e23a01000000be3a010000000400000003010800050000000b0200000000050000
 000c02e600bc0205000000070104000000be3a0100430f2000cc000000e600bc0200000000e600
 bc020000000028000000bc020000e60000000100080000000000e8740200c40e0000c40e000014
@@ -20046,19 +20064,25 @@ bc020000000028000000bc020000e60000000100080000000000e8740200c40e0000c40e000014
 131313131313131313131313131313131313131313131313131313131313131313131313131313
 131313131313131313131313131313131313131313131313131313131313131313131313131313
 131313131313131313131313131313131305000000070101000000030000000000
-}\f0\par
-\pard\nowidctlpar\lang1033 And finally implementation:\par
+}\f0\lang1033\par
+
+\pard\nowidctlpar And finally implementation:\par
 \par
 \b function\b0  TBHPQ.Get(\b var \b0 Item, Value: integer): boolean;\tab\tab\cf3\i //O(lg(n))\cf0\i0\par
 \b var\b0\par
+
 \pard\nowidctlpar\fi540 i, j:\tab integer;\par
 last:\tab TheapItem;\par
 lbh:\tab PItemArray;\par
+
 \pard\nowidctlpar\b begin\b0\par
+
 \pard\nowidctlpar\fi540\b if\b0  n = 0 \b then\par
 begin\tab\tab\cf3\b0\i // heap is empty\cf0\i0\par
+
 \pard\nowidctlpar\fi990 result := False;\par
 exit;\par
+
 \pard\nowidctlpar\fi540\b end;\b0\par
 \par
 lbh := bh;\tab\tab\cf3\i //Make a local copy of the bh\par
@@ -20074,15 +20098,19 @@ Ix[Item] := -1;\par
 dec(n);\par
 \b if\b0  n > 0 \b then\par
 begin\b0\par
+
 \pard\nowidctlpar\fi990 last := lbh[n];\par
 i := 0;\tab\cf3\i // i- the current insertion point for the \b last\cf0\b0\i0\par
 j := 1;\tab\cf3\i // j- the child of the insertion point\cf0\i0\par
 \b while\b0  j < n \b do\par
 begin\par
 \cf3\b0\i\tab //\tab Choose the minimum child unless there is only one\par
+
 \pard\nowidctlpar\fi1440 //\tab\tab Left(i)\tab\tab Right(i) = Left(i)+1\cf0\i0\par
 \b if\b0 (j < n-1) \b and\b0  (lbh[j].Value > lbh[j + 1].Value) \b then\tab\cf3\b0\i //note: do not check 'Complete boolean eval' option\cf0\par
+
 \pard\nowidctlpar\fi1890\i0 inc(j);\tab\tab\tab\tab\tab\tab\cf3\i //or split into seperate if 's\cf0\i0\par
+
 \pard\nowidctlpar\fi1440\cf3\i\par
 //\tab We stop if the insertion point for the \b last \b0 is in the correct place\par
 \cf0\b\i0 if\b0  last.Value <= lbh[j].Value \b then\b0\tab\tab break;\par
@@ -20092,41 +20120,52 @@ Ix[lbh[i].Item] := i;\par
 \cf3\i // and the insertion point goes down.\par
 \cf0\i0 i := j;\par
 j := j \b shl\b0  1+1;\tab\cf3\i //Left(j) = 2*j+1\cf0\i0\par
+
 \pard\nowidctlpar\fi990\b end;\b0\par
 \par
 \cf3\i // Insert the \b last\b0  in the correct place in the heap.\cf0\i0\par
 lbh[i] := last;\par
 Ix[last.Item] := i;\par
+
 \pard\nowidctlpar\fi540\b end;\b0\par
 result := True\par
+
 \pard\nowidctlpar\b end;\par
 \par
+
 \pard\nowidctlpar\fi3240\cf1 ***\par
 \par
+
 \pard\nowidctlpar\fi1800\tx1710 Description of TQHPQ\par
+
 \pard\nowidctlpar TQHPQ\b0  is \b Q\b0 uary \b H\b0 eap implementation of the \b P\b0 riority \b Q\b0 ueue.\par
 \par
-In theory, \b Q\b0 uary \b H\b0 eap (\b QH\b0 ) is more suitable for the Dijksta's algorithm,\lang1049  \lang1033 than Binary Heap, because the \b Put\b0  operation has the same complication as in Binary Heap and performs 2 times less \cf0 comparison\cf1  for the search, and the \b Get\b0  operation is complex very insignificantly and performs less \cf0 comparison\cf1  for the search also. Nevertheless, in practice the insignificant difference of the \b Get\b0  operation disembogues in that the Delphi compiler does not have the necessary amount of \b CPU\lang1049\b0  \lang1033 registers for the so effective optimization as well as in the case of Binary Heap.\lang1049  \lang1033 Besides the \b Get \b0 operation in \b TQHPQ \b0 has 3 unpredictable branches against one in \b TBHPQ,\lang1049\b0  \lang1033 and misprediction penalty in modern processors is ever higher. While help to the compiler as the using of\lang1049  \lang1033 local variables or determination of order of assignment of the fields of records by hand, helps little. For the best understanding, that I mean, you can compare the variant of realization of \b TBHPQ\b0  in a source code with a variant used in \b TPQ\b0  in \b C-Evo 0.14.1\b0 .\lang1049  \lang1033 Besides, I would not do say that, similar tricks are in a good consent with the structured programming.\lang1049  \lang1033 They are possible to the appeal, if we as a result get a perceptible benefit and here is a large necessity.\lang1049  \lang1033 In the case of \b TPQ,\b0  the same effect (acceleration about 2%) can be got by simply changing orders of \b Item\b0  and \b Value\b0  fields in declaration of \b TheapItem\b0 .\par
-\lang1049\b\par
-\lang1033\b0 As a result of above said, the constant constituent of the \b O\b0  notation becomes great and advantage of Quary Heap begins to appear only at plenty enough of data. A situation will change considerably, if, attempt optimization by hand.\lang1049  \lang1033 For those, who want to do own comparisons, in a source code assembler variants for both TBHPQ and TQHPQ is included.\lang1049  \lang1033 In all other you will understand comparing realization of Quary Heap to realization of Binary Heap, because they are very similar.\par
+
+\pard\sa200\sl276\slmult1 In theory, \b Q\b0 uary \b H\b0 eap (\b QH\b0 )\cf0  is more suitable for the Dijkstra's algorithm, than Binary Heap, because the Put operation has the same complication as in Binary Heap and performs 2 times less comparison for the search, and the \b Get\b0  operation is complex very insignificantly and performs less comparison for the search also. Nevertheless, in practice, the insignificant difference of the \b Get\b0  operation disembogues in that the Delphi compiler does not have the necessary amount of \b CPU\b0  registers for the so effective optimization as well as in the case of Binary Heap. Besides the \b Get\b0  operation in \b TQHPQ\b0  has 3 unpredictable branches against one in \b TBHPQ\b0 , and the misprediction penalty in modern processors is ever higher. While helping to the compiler as the using of local variables or determination of the order of assignment of the fields of records by hand, helps little. For the best understanding, that I mean, you can compare the variant of realization of \b TBHPQ\b0  in a source code with a variant used in \b TPQ\b0  in \b C-Evo 0.14.1\b0 . Besides, I would not do say that similar tricks are in good consent with structured programming. They are possible to the appeal if we, as a result, get a perceptible benefit, and here is a large necessity. In the case of \b TPQ\b0 , the same effect (acceleration about 2%) can be got by simply changing orders of \b Item\b0  and \b Value\b0  fields in the declaration of \b TheapItem\b0 .\par
+
+\pard\nowidctlpar As a result of the above said, the constant constituent of the O notation becomes great and the advantage of Quary Heap begins to appear only at plenty enough of data. A situation will change considerably, if, attempt optimization by hand. For those, who want to do their own comparisons, in a source code assembler variants for both TBHPQ and TQHPQ are included. In all other, you will understand comparing the realization of Quary Heap to realization of Binary Heap, because they are very similar.\cf1\par
 \par
-\lang1049\b\par
-\pard\nowidctlpar\fi3240\lang1033 ***\par
+\b\f1\lang1049\par
+
+\pard\nowidctlpar\fi3240\f0\lang1033 ***\par
+
 \pard\nowidctlpar\par
+
 \pard\nowidctlpar\fi1800\tx1710 Description of TSDEBPQ\par
+
 \pard\nowidctlpar TSDEBPQ\b0  is \b S\b0 orted\b  D\b0 ouble\b  E\b0 nded\b  B\b0 uffer implementation of the \b P\b0 riority \b Q\b0 ueue.\par
 \par
-Binary and Quary Heaps is very effective data structures. But also they are not deprived failings. One of them that, data with close or identical by priorities, physically in memory appear strongly sparse and as a result our application constantly runs into cash missing\lang1049 .\lang1033  In the second, they do not take the features of data produced by the Dijksta's algorithm into account.\lang1049  \lang1033 Lets we a little investigate these features.\par
-\par
-Principle of operation of Dijksta's algorithm can be compared to advancement of wave.\lang1049  \lang1033 At first, a zeroing wavefront is generated and he is saved in a buffer (PQ).\lang1049  \lang1033 It is one unique point, which is \lang1049\u1072? \lang1033 starting\lang1049  \lang1033 point.\lang1049  \lang1033 Then \lang1049\u1072?\lang1033  next wavefront is generated and is stored in a buffer.\lang1049  \lang1033 That is all are points, which adjoin with pre-going front, and points of pre-going front, retires from a buffer, etc. Thus in the steady mode, at every instant in a buffer there can be information only about two fronts - the recently begun current front and yet not completed pre-going front. As we always can examine them as one the continuation other, it is possible to say that, at every instant there is in a buffer only\lang1049  \lang1033 one front. Depending on permeability of relief, a wavefront in some places moves quick and in other will be detained.\par
-\par
-All, that is said, it is possible to look visually, if recompile the source code of MapTool, adding definition \{$DEFINE DISPLAY\} in Switches.pas, and will start the menu item of 'GetMoveAdvice - Dijkstra'. For this purpose, it is better to use \b PQ\b0  - \b TSDEBPQ\b0 , because in this case discoloration points from a red color to blue color, in direct ratio to the change of their priority. You may get an interesting picture, with in a number of fringe pattern, with the map  'Concept-Equal.cevo map', in case of starting Loc = 8519 and goal Loc = 367.\b\par
-\lang1049\b0\par
-\lang1033 Now we will draw conclusions.\par
-\lang1049\par
-\pard\nowidctlpar\fi-540\li1080\tx1080\lang1033 1.\tab At every instant in a buffer there is data only about one front, and the longest front has the length = 2/3*MapSize at MapSize -> Infinity.\lang1049  \lang1033 Approaching goes from below\lang1049 , \lang1033 on this account, we always have maxLength\lang1049  \lang1033 <\lang1049  \lang1033 2/3*MapSize\lang1049 . \lang1033 Actually we have the longest front in case if you have Shinkansen wonder and all map surrounds one unique railroad by a zigzag through each 2 tile, with an unique break. This case is shown on a picture. In this case, the first wave quickly spreads on a railway\lang1049 ,\lang1033  on the way saving to the buffer two tiles on every step. Load the included file 'Test.cevo map' in to MapTool, compiled with \{$DEFINE DISPLAY\} option and look after Dijkstra algorithm, for example in case of FromLoc = 190 and ToLoc =71.\lang1049\par
-\par
-\pard\nowidctlpar\li1440\tx1080\cf0\f1{\pict\wmetafile8\picw6111\pich3968\picwgoal3465\pichgoal2250 
+
+\pard\sa200\sl276\slmult1 Binary\cf0  and Quary Heaps are very effective data structures. But also they are not deprived of failings. One of them that, data with close or identical priorities, physically in memory appear strongly sparse and as a result, our application constantly runs into cash missing. In the second, they do not take the features of data produced by Dijkstra's algorithm into account. Let's we a little investigate these features.\par
+The principle of operation of Dijkstra's algorithm can be compared to the advancement of a wave. At first, a zeroing wavefront is generated and he is saved in a buffer (PQ). It is one unique point, which is \f1\lang1049\'e0 starting point. Then \'e0 next wavefront is generated and is stored in a buffer. That is all are points, which adjoin with pre-going front, and points of the pre-going front, retires from a buffer, etc. Thus in the steady mode, at every instant in a buffer, there can be information only about two fronts - the recently begun current front and yet not completed pre-going front. As we always can examine them as one the continuation other, it is possible to say that, at every instant, there is in a buffer only one front. Depending on the permeability of relief, a wavefront in some places moves quickly and in others will be detained.\par
+All, that is said, it is possible to look visually, if recompile the source code of MapTool, adding definition \{$DEFINE DISPLAY\} in Switches.pas, and will start the menu item of 'GetMoveAdvice - Dijkstra'. For this purpose, it is better to use \b PQ\b0  - \b TSDEBPQ\b0 , because in this case discoloration points from a red color to blue color, in direct ratio to the change of their priority. You may get an interesting picture, within several fringe patterns, with the map  'Concept-Equal.cevo map', in case of starting Loc = 8519 and goal Loc = 367.\par
+
+\pard\nowidctlpar Now we will conclude\f0\lang1033 :\cf1\par
+\f1\lang1049\par
+
+\pard 
+{\pntext\f0 1.\tab}{\*\pn\pnlvlbody\pnf0\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-630\li1260\sa200\sl276\slmult1\f0\lang1033 At every \cf0\f1\lang1049 instant in a buffer there is data only about one front, and the longest front has the length = 2/3*MapSize at MapSize -> Infinity. Approaching goes from below, on this account, we always have maxLength < 2/3*MapSize. Actually, we have the longest front in case if you have Shinkansen wonder and all map surrounds one unique railroad by a zigzag through every 2 tiles, with a unique break. This case is shown in a picture. In this case, the first wave quickly spreads on a railway, on the way saving to the buffer two tiles on every step. Load the included file 'Test.cevo map' into MapTool, compiled with \{$DEFINE DISPLAY\} option and look after Dijkstra algorithm, for example in case of FromLoc = 190 and ToLoc =71. \f2{\pict{\*\picprop}\wmetafile8\picw6111\pich3968\picwgoal3465\pichgoal2250 
 0100090000037148000002001a4600000000050000000b0200000000050000000c02800fdf1705
 020000f70000030001261f20002720210028212200201a1b005e4d5000423638003d3234003c31
 3300211b1c00433739003e333500221c1d003f34360040353700231d1e00241e1f001a1516001b
@@ -21079,19 +21118,17 @@ f5f5f5f5eb002d000000f700000314000000000080000000008000008080000000008000800080
 0000808000c0c0c000c0dcc000a6caf000fffbf000a0a0a40080808000ff00000000ff0000ffff
 00000000ff00ff00ff0000ffff00ffffff00040000003402010004000000f00100000300000000
 00
-}\cf1\lang1033\f0\par
-\pard\nowidctlpar\fi-540\li1080\tx1080\par
-2.\tab Since at every instant in the buffer there is information only about one front, their values differs not strongly and numerous equalities are possible, but the number of different values is limited.\par
-3.\tab Since in course of time a wave goes away from a starting point, there is a strong probability that each next generated data have the greater value than all preceding ones have.\par
-4.\tab Decrease_Key operation is used rarely and, if is used, most often, the old values changes a little. This conclusion flows out from 2-th previous.\par
-\pard\nowidctlpar\lang1049\par
-\lang1033 The last two conclusions can be considered as middling-statistical and they cannot prove to be correct for a particular case (It is always possible to contrive an unsuitable particular case).\par
-\line Based on a conclusion 1, we can save on storage allocation for a buffer (\b PQ\b0 ). This statement is a\cf0 bout\cf1  the \b Hp\lang1049  \lang1033\b0 array (Array of Items) in \b TBasePQ\b0 , but not a\cf0 bout\cf1  array \b Ix\b0 .\par
-Based on a conclusion 2, we can build \b PQ\b0  with \b O\b0 (1) strategy. We will\lang2057  analyse\lang1033  such possibility for Ground Units, because they are liable to the features of relief and have the greater set of different cost values and usually, they\lang1049  \cf0\lang1033 numeral \cf1 prevail over other types of Units.\par
-\par
+}\cf1\f0\lang1033\par
+{\pntext\f0 2.\tab}Since \cf0\f1\lang1049 at every instant in the buffer there is information only about one front, their values differ not strongly and numerous equalities are possible, but the number of different values is limited.\par
+{\pntext\f0 3.\tab}Since in course of time a wave goes away from a starting point, there is a strong probability that each next generated data have a greater value than all preceding ones have.\par
+{\pntext\f0 4.\tab}Decrease_Key operation is used rarely and, when is used, most often, the old values change a little. This conclusion flows out from second to previous.\par
+
+\pard\sa200\sl276\slmult1 The last two conclusions can be considered as middling-statistical and they cannot prove to be correct for a particular case (It is always possible to contrive an unsuitable particular case).\par
+Based on conclusion 1, we can save on storage allocation for a buffer \b (PQ)\b0 . This statement is about the \b Hp\b0  array (Array of Items) in \b TBasePQ\b0 , but not about array \b Ix\b0 .\par
+Based on conclusion 2, we can build PQ with O(1) strategy. We will analyze such possibility for Ground Units because they are liable to the features of relief and have the greater set of different cost values and usually, they numeral prevail over other types of Units.\par
 To understand how it can be done, allow first, we will find all possible values of costs for Ground Units:\par
-\par
-\f2\fs16 Cost\\Speed | 550  | 500 | 450 | 400 | 350 | 300 | 250 | 200 | 150 | Comment\par
+
+\pard\nowidctlpar\cf1\f3\fs16\lang1033 Cost\\Speed | 550  | 500 | 450 | 400 | 350 | 300 | 250 | 200 | 150 | Comment\par
 ===========+======+=====+=====+=====+=====+=====+=====+=====+=====+======================================\par
            |   0  |   0 |   0 |   0 |   0 |   0 |   0 |   0 |   0 | Rail with Shinkansen\par
            +------+-----+-----+-----+-----+-----+-----+-----+-----+--------------------------------------\par
@@ -21113,66 +21150,88 @@ To understand how it can be done, allow first, we will find all possible values 
            | 550  | 500 | 450 | 400 | 350 | 300 | 250 | 200 | 150 | MontainCost = Speed\par
 -----------+------+-----+-----+-----+-----+-----+-----+-----+-----+--------------------------------------\par
 \f0\fs20\par
-It can be done so, assume, now processes all neighbors of Location with \b Cost = T\b0 . For example for Unit with \b Speed = 550\b0 , maximal value of \b Cost\b0  which neighboring tile can get,\lang1049  \lang1033 is - \b T1max = T + 550\b0  (MontainCost). If designate the \b Greatest Common Divisor\b0  of all values of one column as \b GCD\b0 , the maximal amount of different values - simultaneously being in the data buffer is \b M = (T1max-T)/GCD+1\b0 . For \b Speed = 550\b0  with Shinkansen wonder we get \b NOD = 2\lang1049\b0  \lang1033 and \b 276\b0  different values only. This means that, 276 buckets suffice for storage of elements of one wave. In addition, separate circular buffer is needed to store references to these buckets. Some buckets sometimes can be empty. Such data organization allows to produce the operations of insert, extract-min and decrease-key during \b O\b0 (1). More detailed, you can see at\lang1049  \lang1033 http:\lang1049\\\lang1033\\www.bogosort.com\\DijkstrasShortestPath.html\fs24\par
-\lang1049\fs20\par
-\lang1033 Building\lang1049  \lang1033 so difficultly organized structure has a sense for large areas, when the calculations are conducted not alone minute. We can simplify him to the limit, densely packing buckets in the circular buffer.\lang1049  \lang1033 Search among the different values, we will conduct by the simple scanning. In final as a result, we get the data structure like \b FIFO\b0 , with sorted items. Again, the offered realization, as well as all other classes of \b PQ\b0  which are used in the program, from the standard decisions differs in those that, procedures of \b Insert\b0 , \b decrease-key\b0  and \b relax\b0  is combined in one, because it gives an obvious profit in program execution time.\lang1049  \lang1033 Moreover, you will pay attention to that, in spite of numerous examples from different textbooks and tutorials, not the alone from our classes does not do the\lang1049  \lang1033 swap of values it is enough the simple\lang1049  overwriting\lang1033 . This all is concept of work of the class - \b TSDEBPQ\b0 . The optimality of such decision is provided to those that:\fs24\par
-\lang1049\fs20\par
-\pard\nowidctlpar\fi-540\li1080\tx1080\lang1033 1.\tab Proceeding from the conclusion 3, during the \b Insert\b0  operation, the scanning is rare crosses the middle of array, and more often is completed somewhere at the beginning. For large regions with the complicated relief, if conclusion 3 proves to be correct little, the value of new element can be compared to the value of element from the middle of array.\lang1049  \lang1033 If the value of new element is greater, we place him from the top of array, if less, from the tail of array. Thus, in any case we will scan \lang1049 ma\lang1033 xi\lang1049 mum\lang1033  the half of all buffer.\lang1049  \lang1033 For Cevo Ground Units this conclusion proves to be correct on 70-80%, for Sea and Air Units on 98%.\fs24\par
-\fs20 2.\tab Conclusion 4. For Cevo Ground Units this conclusion proves to be correct on 75-85%, for Sea and Air Units on 99%.\fs24\par
-\fs20 3.\tab The \b Insert\b0  operation has simple inner loop body, and all branches are well predictable (this has significant importance).\fs24\par
-\fs20 4.\tab Elements with the identical or close values\lang1049 ,\lang1033  in memory are similarly located close, in investigation this the chances on cash hit is increased.\par
-5.\tab The time complexity of \b Delete_min\b0  operation is \b O\b0 (1).\par
+
+\pard\sa200\sl276\slmult1 It can be done so, assume, now processes all neighbors of Location with \b Cost = T\b0 . \cf0\f1\lang1049 For example for Unit with \cf1\b\f0\lang1033 Speed = 550\cf0\b0\f1\lang1049 , maximal value of \cf1\b\f0\lang1033 Cost\cf0\b0\f1\lang1049  which neighboring tile can get, is - \cf1\b\f0\lang1033 T1max = T + 550\cf0\b0\f1\lang1049  (MontainCost). If designate the \cf1\b\f0\lang1033 Greatest Common Divisor\cf0\b0\f1\lang1049  of all values of one column as \b GCD\b0 , the maximal amount of different values - simultaneously being in the data buffer is \b M = (T1max-T)/GCD+1\b0 . For \b Speed = 550\b0  with Shinkansen wonder, we get \b NOD = 2\b0  and \b 276\b0  different values only. This means that 276 buckets suffice for the storage of elements of one wave. Besides, a separate circular buffer is needed to store references to these buckets. Some buckets sometimes can be empty. Such data organization allows producing the operations of insert, extract-min, and decrease-key during \b O(1)\b0 .\par
+Building so difficult organized structure has a sense for large areas when the calculations are conducted not alone minute. We can simplify him to the limit, densely packing buckets in the circular buffer. Search among the different values, we will conduct by the simple scanning. In final as a result, we get the data structure like \b FIFO\b0 , with sorted items. Again, the offered realization, as well as all other classes of \b PQ\b0  which are used in the program, from the standard decisions differs in those that, procedures of \b Insert\b0 , \b decrease-key\b0  and \b relax\b0  is combined in one, because it gives an obvious profit in program execution time. Moreover, you will pay attention to that, despite numerous examples from different textbooks and tutorials, not the alone from our classes does not do the swap of values it is enough the simple overwriting. This all is the concept of work of the class - \b TSDEBPQ\b0 . The optimality of such decision is provided to those that:\par
+\par
+
+\pard 
+{\pntext\f1 1.\tab}{\*\pn\pnlvlbody\pnf1\pnindent0\pnstart1\pndec{\pntxta.}}
+\fi-360\li720\sa200\sl276\slmult1 Proceeding from conclusion 3, during the \b Insert\b0  operation, the scanning is rare crosses the middle of the array and more often is completed somewhere at the beginning. For large regions with the complicated relief, if conclusion 3 proves to be correct little, the value of the new element can be compared to the value of the element from the middle of the array. If the value of the new element is greater, we place him from the top of the array, if less, from the tail of the array. Thus, in any case, we will scan a maximum the half of all buffer. For Cevo Ground Units this conclusion proves to be correct on 70-80%, for Sea and Air Units on 98%.\par
+{\pntext\f1 2.\tab}Conclusion 4. For Cevo Ground Units this conclusion proves to be correct on 75-85%, for Sea and Air Units on 99%.\par
+{\pntext\f1 3.\tab}The \b Insert\b0  operation has a simple inner loop body, and all branches are well predictable (this has significant importance).\par
+{\pntext\f1 4.\tab}Elements with identical or close values, in memory, are similarly located close, in the investigation this the chances of cash hit are increased.\par
+{\pntext\f1 5.\tab}The time complexity of the \b Delete_min\b0  operation is \b O(1)\b0 .\par
+
+\pard\sa200\sl276\slmult1 And yet, if it is certainly known for large regions, that, in a buffer there are a lot of elements with identical values, then during scanning, it is possible to skip elements with identical values.\par
+
+\pard\nowidctlpar Though in a source code I included an assembler variant also, actually he does not have a large necessity. All functions-members of class \b TSDEBPQ\b0  have a simple enough body and well-optimized by a Delphi compiler, and barely by this, it is possible to get the acceleration of more than 5%.\cf1\f0\fs24\lang1033\par
+\f1\fs20\lang1049\par
+
+\pard\nowidctlpar\fi1800\tx1710\b\f0\lang1033 How works TRAPQ\par
+
 \pard\nowidctlpar\par
-And yet, if it is certainly known for large regions, that, in a buffer there are lot of elements with the identical values, then during scanning it is possible to skip elements with the identical values.\par
-\lang1049\par
-\lang1033 Though in a source code I included an assembler variant also, actually he does not have a large necessity. All functions-members of class \b TSDEBPQ\b0  has a simple enough body and well optimized by a Delphi compiler, and barely by this, it is possible to get the acceleration\lang1049  \lang1033 more than 5%.\fs24\par
-\lang1049\fs20\par
-\pard\nowidctlpar\fi1800\tx1710\lang1033\b How works TRAPQ\par
-\pard\nowidctlpar\par
-TRAPQ.Put   \b0 If the \b Item \b0 is\b  \b0 not visited inserts \b (Item, Value) \b0 pair to the queue or replaces it if new \b Value\b0  is smaller than old one. If item\b  \b0 is\b  \b0 not visited it always places at the end of array without any checking, otherwise old value replaces by new one. So time complexity of insert operation is \b O\b0 (1).\par
-Implementation of \b TRAPQ.Put:\par
-\b0\par
-\cf0\b function\b0  TRAPQ.Put(Item, Value: integer): boolean;\par
+
+\pard\sa200\sl276\slmult1 TRAPQ.Put\cf0\b0\f1\lang1049    If the \b Item\b0  is not visited inserts \b (Item, Value)\b0  pair to the queue or replaces it if new \b Value\b0  is smaller than old one. If an item is not visited it always places at the end of the array without any checking, otherwise the old value replaces by the new one. So time complexity of insert operation is \b O(1)\b0 .\par
+Implementation of \b TRAPQ.Put\b0 :\par
+
+\pard\nowidctlpar\b\f0\lang1033 function\b0  TRAPQ.Put(Item, Value: integer): boolean;\par
 \b var\b0\par
+
 \pard\nowidctlpar\fi540 i:\tab\tab integer;\par
 lra:\tab PItemArray;\par
+
 \pard\nowidctlpar\b begin\b0\par
+
 \pard\nowidctlpar\fi540 i := Ix[Item];\par
 lra := Hp;\tab\tab\cf3\i // Make a local copy of the Hp. This forces Delphi compiler to put it to register.\par
 \cf0\i0\par
 \b if\b0  i >= 0 \b then\par
 begin\par
+
 \pard\nowidctlpar\fi900 if\b0  lra[i].Value <= Value \b then\b0\par
 \b begin\tab\tab\cf3\i // \b0 new \b Value\b0  is not smaller \cf0\i0\par
+
 \pard\nowidctlpar\fi1350 result := False;\par
 exit;\tab\tab\cf3\i // nothing to do\cf0\i0\par
+
 \pard\nowidctlpar\fi900\b end;\b0\par
+
 \pard\nowidctlpar\fi540\b end\b0\par
 \b else \b0\par
 \b begin\tab\tab\cf3\b0\i // not visited\cf0\i0\par
+
 \pard\nowidctlpar\fi900 i := n;\tab\tab\cf3\i // put it at the end of array\cf0\i0\par
 Ix[Item] := i;\par
 lra[i].Item := Item;\par
 Inc(n);\tab\cf3\i // Increase Array size\cf0\i0\par
+
 \pard\nowidctlpar\fi540\b end;\par
 \b0\par
 lra[i].Value := Value;\tab\cf3\i // save (new) \b Value\cf0\b0\i0\par
 result := True;\par
+
 \pard\nowidctlpar\b end;\b0\par
 \cf1\par
-\b TRAPQ.Get\b0  finds\b  \b0 smallest element of the array by single scan of the whole array, and deletes him from the array by replacing with last element of the array. All this works takes \b O\b0 (n) time.\par
+\b TRAPQ.Get\cf0\b0\f1\lang1049  finds the smallest element of the array by the single scan of the whole array, and deletes him from the array by replacing it with the last element of the array. All these works take \b O(n)\b0  time.\cf1\f0\lang1033\par
 \par
 \cf0\par
 \b function\b0  TRAPQ.Get(\b var\b0  Item, Value: integer): boolean;\par
 \b var\b0\par
+
 \pard\nowidctlpar\fi450 i, t, minV, iMin:\tab integer;\par
 pMin, pN:\tab\tab ^TheapItem;\par
 lsa:\tab\tab PItemArray;\par
+
 \pard\nowidctlpar\b begin\b0\par
+
 \pard\nowidctlpar\fi450\b if\b0  n = 0 \b then\b0\par
+
 \pard\nowidctlpar\fi540\b begin\tab\tab\cf3\b0\i // heap is empty\cf0\i0\par
+
 \pard\nowidctlpar\fi900 result := False;\par
 exit;\par
+
 \pard\nowidctlpar\fi450\b end;\b0\par
 \par
 lsa := Hp;\tab\tab\tab\cf3\i //Make a local copy of the Hp\cf0\i0\par
@@ -21183,11 +21242,15 @@ dec(n);\par
 \cf3\i // scan array to find min element\cf0\i0\par
 \b for\b0  i := 1 \b to\b0  n \b do\b0\par
 \b begin\par
+
 \pard\nowidctlpar\fi900 if\b0  lsa[i].Value < MinV \b then\b0\par
 \b begin\b0\par
+
 \pard\nowidctlpar\fi1350 minV := lsa[i];\par
 iMin := i;\par
+
 \pard\nowidctlpar\fi900\b end\par
+
 \pard\nowidctlpar\fi450 end;\par
 \cf3\b0\i\par
 // New we found min element\cf0\i0\par
@@ -21203,32 +21266,36 @@ Value := pMin^.Value;\par
 \par
 \b if\b0  iMin < n \b then\par
 begin\par
+
 \pard\nowidctlpar\fi900\b0 pN := @lsa[n];\par
 pMin^.Value := pN^.Value;\par
 t := pN^.Item;\par
 pMin^.Item := t;\par
 Ix[t] := iMin\par
+
 \pard\nowidctlpar\fi450\b end;\par
 \par
 \b0 result := True;\par
+
 \pard\nowidctlpar\b end;\par
 \par
+
 \pard\nowidctlpar\fi1800\tx1710\cf1 Description of A*\par
+
 \pard\nowidctlpar\tx1710\par
-\b0 The algorithm of the given variant of realization of \b A*\b0  does not differ from classic determination of \b A*\b0  algorithm. At the same time, he is\lang1049  \lang1033 done maximally close to the \b GetMoveAdvice\b0  function from C-evo 0.14.1. Actually, it is his modified variant. It is necessary will mark that the\lang1049  \lang1033\b A*\b0  algorithm is usable only in case if the goal location is known and the \b a.ToLoc\b0  parameter can not take the \b maNextCity\b0  value.\lang1049  \lang1033 For Air Units it is possible to find the location of the nearest city and send him there.\par
-\pard\nowidctlpar\lang1049\par
-\pard\nowidctlpar\tx1710\lang1033 The analysis shows that the given variant of realization of \b A*\b0  for Air Units befits always, for other types of Units, efficiency of this variant depends on the parameters of map. For instance, for a standard map (Size 100% and Landmass 33%) he is good similarly for the Sea Units with the navigation.\lang1049  \lang1033 For other Units as well as before,\lang1049  \lang1033 it is better to use \b GetMoveAdvice\b0 , wich implements Dijksta's algorithm.\par
-\cf2\lang1049\par
+
+\pard\sa200\sl276\slmult1\b0 The algorithm \cf0\f1\lang1049 of the given variant of realization of \b A*\b0  does not differ from the classic determination of the \b A*\b0  algorithm. At the same time, he is done maximally close to the \b GetMoveAdvice\b0  function from \b C-evo 0.14.1\b0 . It is his modified variant. It is necessary will mark that the \b A*\b0  algorithm is usable only in case if the goal location is known and the \b a.ToLoc\b0  parameter can not take the \b maNextCity\b0  value. For Air Units, it is possible to find the location of the nearest city and send him there.\par
+
+\pard\nowidctlpar\tx1710 The analysis shows that the given variant of realization of \b A*\b0  for Air Units befits always, for other types of Units, the efficiency of this variant depends on the parameters of the map. For instance, for a standard map (Size 100% and Landmass 33%) he is good similarly for the Sea Units with the navigation. For other Units as well as before, it is better to use \b GetMoveAdvice\b0 , which implements Dijkstra's algorithm.\cf1\f0\lang1033\par
+\cf2\f1\lang1049\par
 \par
-\pard\nowidctlpar\fi3240\cf1\lang1033\b ***\par
-\pard\nowidctlpar\tx1710\cf2\lang1049\b0\par
-\pard\nowidctlpar\cf0\lang1033 Sorry for my bad Enlish. I\cf1\lang1049  regret, that my bad English is the serious obstacle in the report to you more ideas, which would be interesting for you\par
-\pard\nowidctlpar\tx1710\par
-\pard\nowidctlpar\cf0\lang1033 P.S.  A text was translated by a machine translator, whereupon I corrected him in accordance with my literacy. If anybody understood all this text and has the desire in his improvement so that, he became clear for all the other people also, please, I wait Your version of this description.\par
-\par
-\tab Rassim Eminli. \par
-\tab mail:  RassimE@RISK.Az\par
-\par
+
+\pard\nowidctlpar\fi3240\cf1\b\f0\lang1033 ***\par
+
+\pard\nowidctlpar\tx1710\cf2\b0\f1\lang1049\par
+
+\pard\sa200\sl276\slmult1\cf0\f0\lang1033 Sorry \f1\lang1049 for my bad English. A text was translated by a machine translator, whereupon I corrected it according to my literacy.\par
+\tab Rassim Emin\f0\lang1033 li\f1\lang1049 .\par
 \par
 }
  
